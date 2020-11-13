@@ -31,7 +31,6 @@
     "connect-flash": "^0.1.1",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
-    "fsevents": "^2.2.1",
     "if-env": "^1.0.4",
     "memorystore": "^1.6.4",
     "mongoose": "^5.10.13",
