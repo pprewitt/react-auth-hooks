@@ -1,19 +1,17 @@
-# react-auth
-react app with passport authentication and the context api
-
-[Check out the app here](https://calm-escarpment-33185.herokuapp.com/)
+# react-auth-hooks
+react hooks app with passport authentication and the useContext api
 
 ## Requirements
 * React.js
 * Node.js & npm
 * MongoDB
-* Yarn
+* Yarn/NPM
 * Terminal or bash
 
 ## Setup Instructions
 1. clone the repo 
-    * `git clone git@github.com:evanejtucker/react-auth.git`
-    * `cd react-auth`
+    * `git clone git@github.com:jaymascarenas/react-auth-hooks.git`
+    * `cd react-auth-hooks`
 2. install dependencies
     * `npm i`
 3. *If no `node-modules` exist inside the client folder:*
@@ -26,5 +24,5 @@ react app with passport authentication and the context api
 6. Happy Hacking!
 
 ## Contributors
-    Evan E J Tucker
-
+    Jay Mascarenas (Refactored Evan's App to React Hooks and latest packages)
+    Evan E J Tucker (Original Class Based App)
