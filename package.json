@@ -1,5 +1,5 @@
 {
-  "name": "react-auth",
+  "name": "react-auth-hooks",
   "version": "1.0.0",
   "description": "react app with passport auth",
   "main": "server.js",
@@ -15,15 +15,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/evanejtucker/react-auth.git"
+    "url": "git+https://github.com/jaymascarenas/react-auth-hooks.git"
   },
   "keywords": [],
-  "author": "Evan E J Tucker",
+  "author": "Jay Mascarenas",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/evanejtucker/react-auth/issues"
+    "url": "https://github.com/jaymascarenas/react-auth-hooks/issues"
   },
-  "homepage": "https://github.com/evanejtucker/react-auth#readme",
+  "homepage": "https://github.com/jaymascarenas/react-auth-hooks#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "colors": "^1.3.3",
