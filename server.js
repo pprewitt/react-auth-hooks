@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3001;
 const flash = require('connect-flash');
 const mongoose = require('mongoose');
 const session = require('express-session');
-const MemoryStore = require('memorystore')(session)
+const MemoryStore = require('memorystore')(session);
 const passport = require('passport');
 const logger = require('morgan');
 const routes = require('./routes');
@@ -16,12 +16,15 @@ app.use(express.json());
 app.use(logger('dev'));
 app.use(flash());
 app.use(express.static('public'));
+
 app.use(
-  MemoryStore({
-    secret: 'keyboard cat',
+  session({
+    cookie: { maxAge: 86400000 },
+    store: new MemoryStore({
+      checkPeriod: 86400000, // prune expired entries every 24h
+    }),
     resave: false,
-    saveUninitialized: true,
-    // cookie: { secure: true }
+    secret: 'keyboard cat',
   }),
 );
 app.use(passport.initialize());
