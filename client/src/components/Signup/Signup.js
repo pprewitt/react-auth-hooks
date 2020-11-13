@@ -38,37 +38,37 @@ const Signup = () => {
 
   // make sure firstname is at least 3 characters
   const checkFirstname = () => {
-    const length = userData.firstName.length;
+    const length = userData.firstname.length;
     if (length === 0) {
       setValidFirstName(false);
-      setErrorMessage({ ...errorMessage, firstName: '' });
+      setErrorMessage({ ...errorMessage, firstname: '' });
     } else if (length < 3) {
       setValidFirstName(false);
       setErrorMessage({
         ...errorMessage,
-        firstName: 'First Name should be at least 3 characters.',
+        firstname: 'First Name should be at least 3 characters.',
       });
     } else {
       setValidFirstName(true);
-      setErrorMessage({ ...errorMessage, firstName: '' });
+      setErrorMessage({ ...errorMessage, firstname: '' });
     }
   };
 
   // make sure firstname is at least 3 characters
   const checkLastname = () => {
-    const length = userData.lastName.length;
+    const length = userData.lastname.length;
     if (length === 0) {
       setValidLastName(false);
-      setErrorMessage({ ...errorMessage, lastName: '' });
+      setErrorMessage({ ...errorMessage, lastname: '' });
     } else if (length < 3) {
       setValidLastName(false);
       setErrorMessage({
         ...errorMessage,
-        lastName: 'First Name should be at least 3 characters.',
+        lastname: 'First Name should be at least 3 characters.',
       });
     } else {
       setValidLastName(true);
-      setErrorMessage({ ...errorMessage, lastName: '' });
+      setErrorMessage({ ...errorMessage, lastname: '' });
     }
   };
 
@@ -96,19 +96,19 @@ const Signup = () => {
 
   // make sure username is at least 5 characters
   const checkUsername = () => {
-    const length = userData.userName.length;
+    const length = userData.username.length;
     if (length === 0) {
       setValidUserName(false);
-      setErrorMessage({ ...errorMessage, userName: '' });
+      setErrorMessage({ ...errorMessage, username: '' });
     } else if (length < 5) {
       setValidUserName(false);
       setErrorMessage({
         ...errorMessage,
-        userName: 'Username should be at least 5 characters.',
+        username: 'Username should be at least 5 characters.',
       });
     } else {
       setValidUserName(true);
-      setErrorMessage({ ...errorMessage, userName: '' });
+      setErrorMessage({ ...errorMessage, username: '' });
     }
   };
 
@@ -161,32 +161,32 @@ const Signup = () => {
       {failureMessage ? <Alert type="danger">{failureMessage}</Alert> : <p></p>}
       <Form>
         <FormGroup>
-          <Label for="firstName">First Name</Label>
+          <Label for="firstname">First Name</Label>
           <Input
             type="text"
-            name="firstName"
-            id="firstName"
+            name="firstname"
+            id="firstname"
             placeholder="firstname"
-            value={userData.firstName}
+            value={userData.firstname}
             onChange={handleInputChange}
             onBlur={checkFirstname}
             valid={validFirstName}
           />
-          <FormText>{errorMessage['firstName']}</FormText>
+          <FormText>{errorMessage['firstname']}</FormText>
         </FormGroup>
         <FormGroup>
-          <Label for="lastName">Last Name</Label>
+          <Label for="lastname">Last Name</Label>
           <Input
             type="text"
-            name="lastName"
-            id="lastName"
+            name="lastname"
+            id="lastname"
             placeholder="lastname"
-            value={userData.lastName}
+            value={userData.lastname}
             onChange={handleInputChange}
             onBlur={checkLastname}
             valid={validLastName}
           />
-          <FormText>{errorMessage['lastName']}</FormText>
+          <FormText>{errorMessage['lastname']}</FormText>
         </FormGroup>
         <FormGroup>
           <Label for="email">Email</Label>
@@ -203,18 +203,18 @@ const Signup = () => {
           <FormText>{errorMessage['email']}</FormText>
         </FormGroup>
         <FormGroup>
-          <Label for="userName">Username</Label>
+          <Label for="username">Username</Label>
           <Input
             type="text"
-            name="userName"
-            id="userName"
+            name="username"
+            id="username"
             placeholder="username"
-            value={userData.userName}
+            value={userData.username}
             onChange={handleInputChange}
             onBlur={checkUsername}
             valid={validUserName}
           />
-          <FormText>{errorMessage['userName']}</FormText>
+          <FormText>{errorMessage['username']}</FormText>
         </FormGroup>
         <FormGroup>
           <Label for="password">Password</Label>

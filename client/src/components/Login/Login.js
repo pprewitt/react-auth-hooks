@@ -14,10 +14,10 @@ const Login = () => {
           <Label for="username">Username</Label>
           <Input
             type="text"
-            name="userName"
+            name="username"
             id="username"
             placeholder="username"
-            value={userData.userName}
+            value={userData.username}
             onChange={handleInputChange}
           />
         </FormGroup>

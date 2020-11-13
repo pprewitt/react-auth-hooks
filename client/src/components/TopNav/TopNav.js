@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import UserContext from '../../utils/UserContext';
 import './TopNav.scss';
 import {
   Collapse,
@@ -16,6 +17,7 @@ import {
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { loggedIn, logout } = useContext(UserContext);
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -39,12 +41,20 @@ const Navigation = () => {
                 <i className="fas fa-user-secret"></i>
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem>
-                  <NavLink href="/login">Login</NavLink>
-                </DropdownItem>
-                <DropdownItem>
-                  <NavLink href="/signup">Signup</NavLink>
-                </DropdownItem>
+                {loggedIn ? (
+                  <DropdownItem>
+                    <NavLink onClick={logout}>Logout</NavLink>
+                  </DropdownItem>
+                ) : (
+                  <>
+                    <DropdownItem>
+                      <NavLink href="/login">Login</NavLink>
+                    </DropdownItem>
+                    <DropdownItem>
+                      <NavLink href="/signup">Signup</NavLink>
+                    </DropdownItem>
+                  </>
+                )}
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>

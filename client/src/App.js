@@ -9,12 +9,12 @@ import TopNav from './components/TopNav';
 import { Container } from 'reactstrap';
 import UserContext from './utils/UserContext';
 
-function App() {
+const App = () => {
   const [userData, setUserData] = useState({
-    firstName: '',
-    lastName: '',
+    firstname: '',
+    lastname: '',
     email: '',
-    userName: '',
+    username: '',
     password: '',
   });
   const [loggedIn, setLoggedin] = useState(false);
@@ -33,23 +33,22 @@ function App() {
   const handleLogin = (event) => {
     event.preventDefault();
     const data = {
-      userName: userData.userName,
+      username: userData.username,
       password: userData.password,
     };
-    if (userData.userName && userData.password) {
+    if (userData.username && userData.password) {
       API.login(data)
         .then((user) => {
-          console.log('App -> user', user);
-          // if (user.data.loggedIn) {
-          //   setLoggedin(true);
-          //   setUser(user.data.user);
+          if (user.data.loggedIn) {
+            setLoggedin(true);
+            setUser(user.data.user);
 
-          //   console.log('log in successful');
-          //   window.location.href = '/profile';
-          // } else {
-          //   console.log('Something went wrong :(');
-          //   console.log(user);
-          // }
+            console.log('log in successful');
+            window.location.href = '/profile';
+          } else {
+            console.log('Something went wrong :(');
+            alert('Login failed, Please try again.');
+          }
         })
         .catch((error) => {
           console.log(error);
@@ -61,17 +60,19 @@ function App() {
     event.preventDefault();
     try {
       const data = {
-        firstname: userData.firstName,
-        lastname: userData.lastName,
+        firstname: userData.firstname,
+        lastname: userData.lastname,
         email: userData.email,
-        username: userData.userName,
+        username: userData.username,
         password: userData.password,
       };
 
-      if (userData.userName && userData.password) {
+      if (userData.username && userData.password) {
         API.signup(data)
           .then((user) => {
-            console.log('App -> user', user);
+            if (user.data === 'email is already in use') {
+              alert('Email already in use.');
+            }
             if (user.data.loggedIn) {
               if (user.data.loggedIn) {
                 setLoggedin(true);
@@ -153,6 +154,6 @@ function App() {
       </Router>
     </UserContext.Provider>
   );
-}
+};
 
 export default App;
