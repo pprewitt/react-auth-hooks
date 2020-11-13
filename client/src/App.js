@@ -135,7 +135,7 @@ const App = () => {
           <TopNav />
           <Container>
             <Switch>
-              <Route exact path="/" render={Home} />
+              <Route exact path="/" component={Home} />
               <Route
                 exact
                 path="/login"
@@ -146,7 +146,7 @@ const App = () => {
                 path="/signup"
                 render={() => <Auth action="signup" />}
               />
-              <Route exact path="/profile" render={Profile} />
+              <Route exact path="/profile" component={Profile} />
               <Route render={NoMatch} />
             </Switch>
           </Container>
