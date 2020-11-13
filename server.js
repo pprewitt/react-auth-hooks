@@ -38,14 +38,24 @@ if (process.env.NODE_ENV === 'production') {
 app.use(routes);
 
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://localhost/reactauth',
-  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
-  (err) => {
-    if (err) throw err;
-    console.log('🐆  mongoose connection successful 🐆'.yellow);
-    app.listen(PORT, (error) => {
-      if (error) throw error;
-      console.log(`🌎  connected on port ${PORT} 🌍`.cyan);
-    });
+  process.env.MONGODB_URI || 'mongodb://localhost/deep-thoughts',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
   },
 );
+
+// Connect to the Mongo DB
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/reactauth', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+});
+
+// Start the API server
+app.listen(PORT, (error) => {
+  if (error) throw error;
+  console.log(`🌎  connected on port ${PORT} 🌍`.cyan);
+});
