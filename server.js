@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 3001;
 const flash = require('connect-flash');
 const mongoose = require('mongoose');
 const session = require('express-session');
+const MemoryStore = require('memorystore')(session)
 const passport = require('passport');
 const logger = require('morgan');
 const routes = require('./routes');
@@ -16,7 +17,7 @@ app.use(logger('dev'));
 app.use(flash());
 app.use(express.static('public'));
 app.use(
-  session({
+  MemoryStore({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,
