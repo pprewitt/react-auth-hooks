@@ -38,22 +38,21 @@ if (process.env.NODE_ENV === 'production') {
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://localhost/react-auth-hooks',
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-  },
-);
+// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/react-auth-hooks', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   useCreateIndex: true,
+// });
 
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function () {
-  // we're connected!
-  // Start the API server
-  app.listen(PORT, (error) => {
-    if (error) throw error;
-    console.log(`🌎  connected on port ${PORT} 🌍`.cyan);
-  });
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/react-auth-hooks', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+}).
+  catch(error => handleError(error));
+
+// Start the API server
+app.listen(PORT, (error) => {
+  if (error) throw error;
+  console.log(`🌎  connected on port ${PORT} 🌍`.cyan);
 });
