@@ -53,6 +53,8 @@ router.post('/signup', (req, res, next) => {
         }
       });
     }
+  }).catch((error) => {
+    console.log('Issue searching db for user ', error);
   });
 });
 
