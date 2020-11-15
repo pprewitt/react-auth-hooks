@@ -40,7 +40,7 @@ app.use(routes);
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/react-auth-hooks', {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
+  useUnifiedTopology: false,
   useCreateIndex: true,
   serverSelectionTimeoutMS: 5000
 }).catch(error => {
