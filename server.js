@@ -38,18 +38,12 @@ if (process.env.NODE_ENV === 'production') {
 app.use(routes);
 
 // Connect to the Mongo DB
-// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/react-auth-hooks', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   useCreateIndex: true,
-// });
-
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/react-auth-hooks', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
-}).
-  catch(error => handleError(error));
+  serverSelectionTimeoutMS: 5000
+});
 
 // Start the API server
 app.listen(PORT, (error) => {
