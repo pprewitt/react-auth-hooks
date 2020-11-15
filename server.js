@@ -43,6 +43,12 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/react-auth-hook
   useUnifiedTopology: true,
   useCreateIndex: true,
   serverSelectionTimeoutMS: 5000
+}).catch(error => {
+  console.log('Error connecting to Mongoose -> ', error);
+});
+
+mongoose.connection.on('error', err => {
+  console.log('Error staying connected to Mongoose -> ', err);
 });
 
 // Start the API server
