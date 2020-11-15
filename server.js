@@ -38,17 +38,23 @@ if (process.env.NODE_ENV === 'production') {
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/react-auth-hooks', {
-  dbName: 'admin',
-  useNewUrlParser: true,
-  useUnifiedTopology: false,
-  useCreateIndex: true,
-  serverSelectionTimeoutMS: 5000
-}).catch(error => {
-  console.log('Error connecting to Mongoose -> ', error);
+mongoose
+  .connect(process.env.MONGODB_URI || 'mongodb://localhost/react-auth-hooks', {
+    dbName: 'admin',
+    useNewUrlParser: true,
+    useUnifiedTopology: false,
+    useCreateIndex: true,
+    serverSelectionTimeoutMS: 5000,
+  })
+  .catch((error) => {
+    console.log('Error connecting to Mongoose -> ', error);
+  });
+
+mongoose.connection.once('open', () => {
+  console.log('MongoDB Connected');
 });
 
-mongoose.connection.on('error', err => {
+mongoose.connection.on('error', (err) => {
   console.log('Error staying connected to Mongoose -> ', err);
 });
 
