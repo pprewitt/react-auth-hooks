@@ -39,6 +39,7 @@ app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/react-auth-hooks', {
+  dbName: 'admin',
   useNewUrlParser: true,
   useUnifiedTopology: false,
   useCreateIndex: true,
