@@ -10,6 +10,7 @@ const MemoryStore = require('memorystore')(session);
 const passport = require('passport');
 const logger = require('morgan');
 const routes = require('./routes');
+require('dotenv').config()
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
