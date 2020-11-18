@@ -20,7 +20,6 @@ router.post(
 );
 
 router.post('/signup', (req, res, next) => {
-  console.log('**** REQ.BODY ****\n', req.body);
   db.User.findOne({ username: req.body.username }, (err, user) => {
     if (err) throw err;
     if (user) {
@@ -28,14 +27,12 @@ router.post('/signup', (req, res, next) => {
       return res.json('user already exists');
     }
     if (!user) {
-      console.log('***** NO CURRENT USER, CHECK EMAIL *****\n');
       db.User.findOne({ email: req.body.email }, (error, useremail) => {
         if (error) throw error;
         if (useremail) {
           return res.json('email is already in use');
         }
         if (!useremail) {
-          console.log('****** NO EXISTING EMAIL FOUND INSERT INTO DB');
           const newUser = new db.User({
             firstname: req.body.firstname,
             lastname: req.body.lastname,
@@ -44,7 +41,6 @@ router.post('/signup', (req, res, next) => {
             password: req.body.password,
           });
           newUser.password = newUser.generateHash(req.body.password);
-          console.log('****** --- newUser', newUser);
           newUser.save((error2) => {
             if (error2) throw error2;
             console.log('user saved!');
