@@ -39,14 +39,12 @@ app.use(routes);
 
 // Connect to the Mongo DB
 mongoose
-  .connect('mongodb+srv://react-auth-hooks-user:wcL0eWhO7U5Xxoxe@react-auth-hooks.9opbf.mongodb.net/test?retryWrites=true&w=majority', {
-    dbName: 'admin',
+  .connect(process.env.MONGODB_URI || 'mongodb://localhost/react-auth-hooks', {
     useNewUrlParser: true,
-    useUnifiedTopology: false,
+    useUnifiedTopology: true,
     useCreateIndex: true,
-    serverSelectionTimeoutMS: 5000,
   })
-  .catch((error) => {
+  .catch((error) => { 
     console.log('Error connecting to Mongoose -> ', error);
   });
 
