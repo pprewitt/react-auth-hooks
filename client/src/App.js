@@ -8,7 +8,7 @@ import NoMatch from './pages/NoMatch';
 import TopNav from './components/TopNav';
 import { Container } from 'reactstrap';
 import UserContext from './utils/UserContext';
-
+import NewSnip from './pages/newsnip'
 const App = () => {
   const [userData, setUserData] = useState({
     firstname: '',
@@ -145,6 +145,12 @@ const App = () => {
                 exact
                 path="/signup"
                 render={() => <Auth action="signup" />}
+              />
+              <Route
+                exact
+                path="/newSnip"
+                component ={NewSnip}
+                render={() => <Auth action="newSnip" />}
               />
               <Route exact path="/profile" component={Profile} />
               <Route render={NoMatch} />

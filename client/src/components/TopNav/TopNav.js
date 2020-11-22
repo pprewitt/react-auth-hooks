@@ -25,13 +25,16 @@ const Navigation = () => {
 
   return (
     <div>
-      <Navbar className="navbar" light expand="md">
-        <NavbarBrand href="/">React Auth</NavbarBrand>
+      <Navbar className="navbar" color="dark" dark expand="md">
+        <NavbarBrand href="/"><img src="https://img.icons8.com/color/48/000000/source-code.png"/>QC Pro</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
               <NavLink href="/">Home</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/newSnip">New Snip</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="/profile">Profile</NavLink>
@@ -43,15 +46,15 @@ const Navigation = () => {
               <DropdownMenu right>
                 {loggedIn ? (
                   <DropdownItem>
-                    <NavLink onClick={logout}>Logout</NavLink>
+                    <NavLink style={{color:"black"}} onClick={logout}>Logout</NavLink>
                   </DropdownItem>
                 ) : (
                   <>
                     <DropdownItem>
-                      <NavLink href="/login">Login</NavLink>
+                      <NavLink style={{color:"black"}} href="/login">Login</NavLink>
                     </DropdownItem>
                     <DropdownItem>
-                      <NavLink href="/signup">Signup</NavLink>
+                      <NavLink  style={{color:"black"}} href="/signup">Signup</NavLink>
                     </DropdownItem>
                   </>
                 )}

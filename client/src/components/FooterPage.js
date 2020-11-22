@@ -48,7 +48,7 @@ function setJokeFunction() {
 
 
     return(
-  <Navbar fixed="bottom" bg="dark" variant="dark">
+  <Navbar fixed="bottom" dark color="dark">
     <NavbarText>QuikCode Say:<div></div>"<em>{Joke}</em>"</NavbarText>
     <Collapse className = "justify-content-end">
     <Button onClick={setJokeFunction} className="mr-4">Hit Me Again</Button>

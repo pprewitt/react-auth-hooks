@@ -5,6 +5,7 @@ import FooterPage from '../components/FooterPage'
 import LogInBro from '../components/loginbro'
 import UserContext from '../utils/UserContext'
 
+
 function NewSnip(){
 
     const { user, loggedIn, logout } = useContext(UserContext);
