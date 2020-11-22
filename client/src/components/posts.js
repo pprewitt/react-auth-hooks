@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 function Posts({name, author, language, snip, avatar, note}){
 
     return(<Card style={{ width: '100%',  display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center" }}>
- <FontAwesomeIcon icon={avatar} size="3x"></FontAwesomeIcon>
+ <FontAwesomeIcon icon={avatar} size="3x" className = "mt-2"></FontAwesomeIcon>
     <CardBody>
       <CardText>
        {author} Created a code snippet Titled {name} click the button to visit it

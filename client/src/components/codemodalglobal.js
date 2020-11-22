@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { Button,  Modal, Card,   ModalHeader, ModalBody, ModalFooter, } from 'reactstrap'
+import { Button, Modal, Card, Collapse, CardHeader, CardBody, ModalHeader, ModalBody, ModalFooter, } from 'reactstrap'
 
 import ReactAce from 'react-ace';
 
@@ -34,7 +34,9 @@ function AceModelGlobal({ name, title, note, author, snip }) {
   }
 
   const SaveGlobal = () => { }
+  const [isOpen, setIsOpen] = useState(false);
 
+  const toggle = () => setIsOpen(!isOpen);
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
