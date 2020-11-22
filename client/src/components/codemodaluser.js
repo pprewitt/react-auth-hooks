@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import {Button, Modal, Form  }from 'reactstrap'
+import {Button, Form, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup  }from 'reactstrap'
 
 import ReactAce from 'react-ace';
 import brace from 'brace';
@@ -61,13 +61,13 @@ function AceModelUser({name, title, snip, sniptwo, props}){
           backdrop="static"
           keyboard={false}
         >
-          <Modal.Header closeButton>
-          <Modal.Title>{name}</Modal.Title>
-          </Modal.Header>
-          <Modal.Body >
-          <Form.Group controlId="formBasicEmail">
-              <Form.Control type="email" value={name} onChange={handleSnipInput} />
-          </Form.Group>
+          <ModalHeader closeButton>
+          <h1>{name}</h1>
+          </ModalHeader>
+          <ModalBody >
+          <FormGroup controlId="formBasicEmail">
+              <FormControl type="email" value={name} onChange={handleSnipInput} />
+          </FormGroup>
           <div className="d-flex">
 
              <div className="editor mb-2">
@@ -101,9 +101,9 @@ function AceModelUser({name, title, snip, sniptwo, props}){
               <option value="handlebars">Handlebars</option>
           </Form.Control>
           <br />
-          <Form.Group controlId="formBasicEmail">
+          <FormGroup controlId="formBasicEmail">
               <Form.Control name="keywords"  type="email" placeholder="Keywords" onChange={handleSnipInput} />
-          </Form.Group>
+          </FormGroup>
 
           <Form.Control name="share" size="sm" as="select" onChange={handleSnipInput}>
               <option>Sharing Preferences</option>
@@ -112,13 +112,13 @@ function AceModelUser({name, title, snip, sniptwo, props}){
               <option>Followers only</option>
           </Form.Control>
           
-          </Modal.Body>
-          <Modal.Footer>
+          </ModalBody>
+          <ModalFooter>
             <Button variant="secondary" onClick={handleClose}>
               Delete
             </Button>
             <Button variant="primary" onClick={updateSnip}>Update</Button>
-          </Modal.Footer>
+          </ModalFooter>
         </Modal>
       </>)
 
