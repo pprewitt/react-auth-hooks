@@ -6,7 +6,8 @@ import {
   Label,
   Input,
   FormText,
-  Alert,
+  Alert, Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import UserContext from '../../utils/UserContext';
@@ -155,18 +156,25 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <h2 className="loginTitle">Signup</h2>
-      <hr />
+    <div style={{display:"flex", flexDirection:"column", alignItems: "center", justifyContent: "center", marginTop: "10%",opacity:"0.8"}}> <Card
+        bg="secondary"
+        text='white'
+        style={{ width: '30rem' }}
+        className="mb-2 bg-secondary"
+      >
+       
+        <CardBody>
+
+        <CardTitle className= "text-white">Sign up</CardTitle>
       {failureMessage ? <Alert type="danger">{failureMessage}</Alert> : <p></p>}
       <Form>
         <FormGroup>
-          <Label for="firstname">First Name</Label>
+          
           <Input
             type="text"
             name="firstname"
             id="firstname"
-            placeholder="firstname"
+            placeholder="first name"
             value={userData.firstname}
             onChange={handleInputChange}
             onBlur={checkFirstname}
@@ -175,12 +183,10 @@ const Signup = () => {
           <FormText>{errorMessage['firstname']}</FormText>
         </FormGroup>
         <FormGroup>
-          <Label for="lastname">Last Name</Label>
           <Input
             type="text"
-            name="lastname"
             id="lastname"
-            placeholder="lastname"
+            placeholder="last name"
             value={userData.lastname}
             onChange={handleInputChange}
             onBlur={checkLastname}
@@ -189,7 +195,6 @@ const Signup = () => {
           <FormText>{errorMessage['lastname']}</FormText>
         </FormGroup>
         <FormGroup>
-          <Label for="email">Email</Label>
           <Input
             type="email"
             name="email"
@@ -203,7 +208,6 @@ const Signup = () => {
           <FormText>{errorMessage['email']}</FormText>
         </FormGroup>
         <FormGroup>
-          <Label for="username">Username</Label>
           <Input
             type="text"
             name="username"
@@ -217,7 +221,6 @@ const Signup = () => {
           <FormText>{errorMessage['username']}</FormText>
         </FormGroup>
         <FormGroup>
-          <Label for="password">Password</Label>
           <Input
             type="password"
             name="password"
@@ -231,7 +234,6 @@ const Signup = () => {
           <FormText>{errorMessage['password']}</FormText>
         </FormGroup>
         <FormGroup>
-          <Label for="confirmPassword">Confirm Password</Label>
           <Input
             type="password"
             name="password"
@@ -255,14 +257,16 @@ const Signup = () => {
             Signup
           </Button>
         ) : (
-          <Button onClick={handleSignup} color="danger" block disabled>
+          <Button className = "text-white" onClick={handleSignup} color="primary" block disabled>
             Signup
           </Button>
         )}
-        <p className="signupLink">
-          <Link to="/login">already have an account? Sign in here</Link>
+        <p className="signupLink text-white">
+          <Link className="text-white" to="/login">already have an account? Sign in here</Link>
         </p>
       </Form>
+      </CardBody>
+      </Card>
     </div>
   );
 };

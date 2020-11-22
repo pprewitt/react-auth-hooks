@@ -1,17 +1,25 @@
 import React, { useContext } from 'react';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Alert, Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import UserContext from '../../utils/UserContext';
 
 const Login = () => {
   const { userData, handleInputChange, handleLogin } = useContext(UserContext);
   return (
-    <div>
-      <h2 className="loginTitle">Login</h2>
+    <div style={{display:"flex", flexDirection:"column", alignItems: "center", justifyContent: "center", marginTop: "10%",opacity:"0.8"}}> <Card
+        bg="secondary"
+        text='white'
+        style={{ width: '30rem' }}
+        className="mb-2 bg-secondary"
+      >
+       
+        <CardBody>
+      <h2 className="loginTitle text-white">Login</h2>
       <hr />
       <Form>
         <FormGroup>
-          <Label for="username">Username</Label>
+          <Label for="username" className="text-white">Username</Label>
           <Input
             type="text"
             name="username"
@@ -22,7 +30,7 @@ const Login = () => {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="password">Password</Label>
+          <Label for="password" className="text-white">Password</Label>
           <Input
             type="password"
             name="password"
@@ -36,9 +44,11 @@ const Login = () => {
           Login
         </Button>
         <p className="signupLink">
-          <Link to="/signup">dont have an account? Sign up here</Link>
+          <Link className="text-white" to="/signup">dont have an account? Sign up here</Link>
         </p>
       </Form>
+      </CardBody>
+      </Card>
     </div>
   );
 };
