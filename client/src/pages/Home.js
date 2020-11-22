@@ -43,7 +43,7 @@ const Home = () => {
               <h4>Global Code Search</h4>
               <FormGroup>
                 <Label for="exampleCustomSelect">Select a Language</Label>
-                <CustomInput type="select" id="exampleCustomSelect" name="customSelect">
+                <CustomInput type="select" id="exampleCustomSelect" name="customSelect" >
                   <option value="">Select</option>
                   <option>JavaScript</option>
                   <option>HTML</option>
