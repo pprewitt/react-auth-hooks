@@ -66,7 +66,7 @@ function AceModelUser({name, title, snip, sniptwo, props}){
           </ModalHeader>
           <ModalBody >
           <FormGroup controlId="formBasicEmail">
-              <FormControl type="email" value={name} onChange={handleSnipInput} />
+              {/* <FormControl type="email" value={name} onChange={handleSnipInput} /> */}
           </FormGroup>
           <div className="d-flex">
 
@@ -77,7 +77,7 @@ function AceModelUser({name, title, snip, sniptwo, props}){
              </div>
           </div>
 
-          <Form.Control name="language" size="sm" as="select" id="languageSelect" onChange={languageSelect}>
+          {/* <Form.Control name="language" size="sm" as="select" id="languageSelect" onChange={languageSelect}>
 
               <option value="html">HTML</option>
               <option value="javascript">Javascript</option>
@@ -110,7 +110,7 @@ function AceModelUser({name, title, snip, sniptwo, props}){
               <option>Private</option>
               <option>Public</option>
               <option>Followers only</option>
-          </Form.Control>
+          </Form.Control> */}
           
           </ModalBody>
           <ModalFooter>
