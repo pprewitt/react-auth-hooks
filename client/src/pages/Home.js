@@ -3,7 +3,7 @@ import UserContext from '../utils/UserContext'
 import LogInBro from '../components/loginbro'
 import AceModalGlobal from '../components/codemodalglobal'
 import Posts from '../components/posts'
-import { Container, Row, Col, Jumbotron, Form, Button, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Container, Row, Col, Jumbotron, Form, Button, FormGroup, Label, CustomInput } from 'reactstrap';
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { faSeedling } from '@fortawesome/free-solid-svg-icons'
 import { faHatWizard } from '@fortawesome/free-solid-svg-icons'
@@ -28,8 +28,7 @@ import FooterPage from '../components/FooterPage'
 
 const Home = () => {
   const { user, loggedIn, logout } = useContext(UserContext);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const toggle = () => setDropdownOpen(prevState => !prevState);
+  
 
   const globalexample = [{ name: "example 1", author: "Bob", language: "Html", snip: "<p>Hello World</p>", note: "Quality Stuff" }]
 
@@ -42,42 +41,40 @@ const Home = () => {
           <Col sm={12} md={4}>
             <Jumbotron style={{ marginTop: "10%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", opacity: "0.7" }}>
               <h4>Global Code Search</h4>
-              <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-                <DropdownToggle caret>
-                Code type
-        </DropdownToggle>
-                <DropdownMenu size="sm" as="select">
-                 
-                  <DropdownItem>Javascript</DropdownItem>
-                  <DropdownItem>HTML</DropdownItem>
-                  <DropdownItem>CSS</DropdownItem>
-                  <DropdownItem>Mark Down</DropdownItem>
-                  <DropdownItem>Handlebars</DropdownItem>
-                </DropdownMenu>
-                </Dropdown>
-                <br />
-                <Button>Search</Button>
-                <br />
-                {globalexample.map(item => <><AceModalGlobal name={item.name} snip={item.snip} author={item.author} language={item.language} note={item.note} /><br /></>)}
+              <FormGroup>
+                <Label for="exampleCustomSelect">Select a Language</Label>
+                <CustomInput type="select" id="exampleCustomSelect" name="customSelect">
+                  <option value="">Select</option>
+                  <option>JavaScript</option>
+                  <option>HTML</option>
+                  <option>CSS</option>
+                  <option>Mark Down</option>
+                  <option>Handlebars</option>
+                </CustomInput>
+              </FormGroup>
+              <br />
+              <Button>Search</Button>
+              <br />
+              {globalexample.map(item => <><AceModalGlobal name={item.name} snip={item.snip} author={item.author} language={item.language} note={item.note} /><br /></>)}
             </Jumbotron>
-            </Col>
-            <Col sm={12} md={8}>
-              <Jumbotron style={{ marginTop: "5%", opacity: "0.7" }}>
-                <h2 style={{ textAlign: "center" }}>News Feed:</h2>
-                {postsexample.map((item) => <><Posts name={item.name} snip={item.snip} author={item.author} language={item.language} avatar={item.avatar} note={item.note} /><br /></>)}
-              </Jumbotron>
-            </Col>
+          </Col>
+          <Col sm={12} md={8}>
+            <Jumbotron style={{ marginTop: "5%", opacity: "0.7" }}>
+              <h2 style={{ textAlign: "center" }}>News Feed:</h2>
+              {postsexample.map((item) => <><Posts name={item.name} snip={item.snip} author={item.author} language={item.language} avatar={item.avatar} note={item.note} /><br /></>)}
+            </Jumbotron>
+          </Col>
         </Row>
-    </Container>
-        <FooterPage />
+      </Container>
+      <FooterPage />
 
-    
+
     </>
-    ): (
-      <LogInBro />
+    ) : (
+        <LogInBro />
       )}
 
-    </>
-    )
+  </>
+  )
 }
 export default Home;

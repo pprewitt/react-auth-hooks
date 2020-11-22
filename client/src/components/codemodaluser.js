@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react'
+
 import {Button, Modal, ModalHeader,ModalBody, ModalFooter, Form, FormGroup,Input, InputGroup,InputGroupAddon}from 'reactstrap'
+
 
 import ReactAce from 'react-ace';
 import brace from 'brace';
@@ -55,12 +57,14 @@ function AceModelUser({name, title, snip, sniptwo, props}){
 
   
     return (
+
    <div>
     <Button color="primary" onClick={toggle}>{name}</Button>
     <Modal isOpen={modal} toggle={toggle} >
       <ModalHeader toggle={toggle} close={closeBtn}>{name}</ModalHeader>
       <ModalBody>
       <div className="editor mb-2">
+
                   <ReactAce name="editorOne" mode={Language} theme="monokai" setReadOnly={false} width={465} onChange={handleSnipInput} maxLines={Infinity} value={snip}/>
                   <textarea  ref={textAreaRef1} value={snip} className="textArea"></textarea>
                   <Button onClick={copyClipboard1} className="float-right m-1">Copy Code</Button>
@@ -94,13 +98,16 @@ function AceModelUser({name, title, snip, sniptwo, props}){
               <option value="handlebars">Handlebars</option>
           </Input>
           <br />
+
       
+
 
           <Input name="share" size="sm" type="select" onChange={handleSnipInput}>
               <option>Sharing Preferences</option>
               <option>Private</option>
               <option>Public</option>
               <option>Followers only</option>
+
           </Input>
           <br></br>
           <Input type="textarea" name="Notes" id="exampleText" onChange={handleSnipInput} placeholder="notes" />
@@ -120,6 +127,7 @@ function AceModelUser({name, title, snip, sniptwo, props}){
 
             
 )
+
 
 }
 export default AceModelUser
