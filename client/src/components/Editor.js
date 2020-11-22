@@ -8,7 +8,7 @@ import 'brace/mode/javascript';
 import 'brace/mode/css';
 import 'brace/mode/html';
 import 'brace/theme/monokai';
-import Button from 'react-bootstrap/Button';
+import {Button} from 'reactstrap'
 import './Editor.css'
 import $ from "jquery";
 

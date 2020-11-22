@@ -65,7 +65,7 @@ const Signup = () => {
       setValidLastName(false);
       setErrorMessage({
         ...errorMessage,
-        lastname: 'First Name should be at least 3 characters.',
+        lastname: 'Last Name should be at least 3 characters.',
       });
     } else {
       setValidLastName(true);
@@ -186,6 +186,7 @@ const Signup = () => {
           <Input
             type="text"
             id="lastname"
+            name="lastname"
             placeholder="last name"
             value={userData.lastname}
             onChange={handleInputChange}
