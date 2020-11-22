@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import './Profile.scss';
-import { Button, Container, Row, Col, Jumbotron, Form, InputGroup, InputGroupText, InputGroupAddon, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Input } from 'reactstrap';
+import { Button, Container, Row, Col, Jumbotron, Form, InputGroup, InputGroupText, InputGroupAddon, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Input, Label, FormGroup, CustomInput } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import UserContext from '../../utils/UserContext';
 import AceModalUser from '../../components/codemodaluser'
@@ -169,10 +169,7 @@ const Profile = () => {
 
 
   const { user, loggedIn, logout } = useContext(UserContext);
-  const [avatardropdownOpen, setavatarDropdownOpen] = useState(false);
-  const [langdropdownOpen, setlangDropdownOpen] = useState(false);
-  const avatartoggle = () => setavatarDropdownOpen(prevState => !prevState);
-  const langtoggle = () => setlangDropdownOpen(prevState => !prevState);
+ 
   return (<>
     {loggedIn ? (<>
 
@@ -181,19 +178,18 @@ const Profile = () => {
           <Col sm={12} md={3}>
             <Jumbotron style={{ marginTop: "10%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", opacity: "0.7" }}>
               <h4>Private Code Search</h4>
-              <Dropdown isOpen={langdropdownOpen} toggle={langtoggle}>
-                <DropdownToggle caret>
-                  Code type
-        </DropdownToggle>
-                <DropdownMenu size="sm" as="select">
-
-                  <DropdownItem>Javascript</DropdownItem>
-                  <DropdownItem>HTML</DropdownItem>
-                  <DropdownItem>CSS</DropdownItem>
-                  <DropdownItem>Mark Down</DropdownItem>
-                  <DropdownItem>Handlebars</DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
+              <FormGroup>
+                
+                <CustomInput type="select" id="exampleCustomSelect" onChange={handlePrivateInput} name="customSelect" >
+                  <option value="">Select a Language</option>
+                  <option>JavaScript</option>
+                  <option>HTML</option>
+                  <option>CSS</option>
+                  <option>Mark Down</option>
+                  <option>Handlebars</option>
+                </CustomInput>
+              </FormGroup>
+              
               <br />
               <InputGroup size="sm" className="mb-3" onChange={handlePrivateInput}>
                 <InputGroupAddon addonType="prepend">
@@ -210,15 +206,13 @@ const Profile = () => {
             <Jumbotron style={{ marginTop: "5%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", opacity: "0.7" }}>
               <FontAwesomeIcon icon={avatarState} size="7x"></FontAwesomeIcon>
               <br></br>
-              <Dropdown isOpen={avatardropdownOpen} toggle={avatartoggle}>
-                <DropdownToggle caret>
-                {avatarState}
-        </DropdownToggle>
-                <DropdownMenu size="sm" as="select" name="avatar" onSelect={avatarInputChange}>
-                  <option>Choose an Avatar</option>
-                  {Avatars.map(item => <AvatarOption name={item.name}></AvatarOption>)}
-                </DropdownMenu>
-              </Dropdown>
+              <FormGroup>
+                
+              <CustomInput size="sm" type="select" name="avatar" onChange={avatarInputChange}>
+            <option>Choose an Avatar</option>
+            {Avatars.map(item =><AvatarOption name={item.name}></AvatarOption>)}
+            </CustomInput>
+            </FormGroup>
               <hr />
               <h1>Username:<span></span></h1>
               <textarea style={{ width: "80%" }} rows="7" name="bio" onChange={handleUserFormInput} placeholder="Write Your Bio Here"></textarea>
