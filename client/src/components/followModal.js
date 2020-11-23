@@ -4,39 +4,27 @@ import {Modal, Button, ModalHeader, ModalBody, ModalFooter} from 'reactstrap'
 
 
 
-function FollowModal({name, skills}){
+function FollowModal({name, bio}){
 
-    const [show, setShow] = useState(false);
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
     const followUser =() => {}
-    return (
-      <>
-        <Button variant="primary" onClick={handleShow}>
-          {name}
-        </Button>
-  
-        <Modal
-          show={show}
-          onHide={handleClose}
-          backdrop="static"
-          keyboard={false}
-        >
-          <ModalHeader closeButton>
-          <h1>{name}</h1>
-          </ModalHeader>
-          <ModalBody>
-    <h4>{name} has these skills: "{skills}" do you want to follow their code snips?</h4>
-          </ModalBody>
-          <ModalFooter>
-            <Button variant="secondary" onClick={handleClose}>
-              No
-            </Button>
-            <Button onClick={followUser} variant="primary">Yes</Button>
-          </ModalFooter>
-        </Modal>
-      </>)
+    return (   
+       <div>
+      <Button color="primary" onClick={toggle}>{name}</Button>
+      <Modal isOpen={modal} toggle={toggle} >
+    <ModalHeader toggle={toggle} charCode="X">{name}</ModalHeader>
+        <ModalBody>
+        {bio}
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={followUser}>Follow</Button>{' '}
+          <Button color="secondary" onClick={toggle}>Cancel</Button>
+        </ModalFooter>
+      </Modal>
+    </div>
+    )
 
 }
 export default FollowModal

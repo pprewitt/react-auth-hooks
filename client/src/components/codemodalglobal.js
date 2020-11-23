@@ -17,11 +17,8 @@ import $ from "jquery";
 
 function AceModelGlobal({ name, title, note, author, snip }) {
 
-  const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
+  const [modal, setModal] = useState(false);
 
   //need to change language to user choice
   const [Language, setLanguage] = useState("html");
@@ -34,40 +31,42 @@ function AceModelGlobal({ name, title, note, author, snip }) {
   }
 
   const SaveGlobal = () => { }
+
+
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggle = () => setIsOpen(!isOpen);
+  const toggle = () => setModal(!modal);
+  const toggles = () => setIsOpen(!isOpen);
+
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button color="primary" onClick={toggle}>
         {name}
       </Button>
 
-      <Modal
-        show={show}
-        onHide={handleClose}
-        backdrop="static"
-        keyboard={false}
-      >
-        <ModalHeader closeButton>
-          <h1>{name + " by " + author}</h1>
-        </ModalHeader>
+      <Modal isOpen={modal} toggle={toggle} >
+        <ModalHeader toggle={toggle} charCode="Y"><h1>{name + " by " + author}</h1></ModalHeader>
         <ModalBody>
-
-          <div className="d-flex">
+        <div className="d-flex">
             <div className="editor">
               <ReactAce mode={Language} theme="monokai" value={snip} setReadOnly={true} width={465} maxLines={Infinity} />
               <textarea ref={textAreaRef1} value={snip} className="textArea"></textarea>
             </div>
           </div>
-
+          <br/>
+          <Button color="primary" onClick={toggles} style={{ marginBottom: '1rem' }}>Notes</Button>
+      <Collapse isOpen={isOpen}>
+        <Card>
+          <CardBody>
+            {note}
+          </CardBody>
+        </Card>
+      </Collapse>
         </ModalBody>
         <ModalFooter>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-            </Button>
-          <Button onClick={SaveGlobal} variant="primary">Save to your Library</Button>
-          <Button onClick={copyClipboard} variant="primary">Copy To Clipboard</Button>
+          <Button color="secondary" onClick={toggle}>Close</Button>
+          <Button color="secondary" onClick={copyClipboard}>Copy To Clipboard</Button>
+          <Button color="primary" onClick={SaveGlobal}>Save to your Library</Button>{' '}
         </ModalFooter>
         {/* <Accordion defaultActiveKey="0">
           <Card>
