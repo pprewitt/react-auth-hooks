@@ -127,6 +127,7 @@ const example = [{ name: "example", snip: "<p>hello world</p>", sniptwo: "<h1>go
 const follow = [{ name: "Bob", skills: "none" }]
 
 const Profile = () => {
+
   const [avatarState, setAvatar] = useState()
 
   function avatarInputChange(event) {
@@ -197,7 +198,7 @@ const Profile = () => {
                 </InputGroupAddon>
                 <Input name="keywords" aria-label="Small" aria-describedby="Keywords" placeholder="KeyWords" />
               </InputGroup>
-              <Button onClick={privateSearchCode}>Search</Button>
+              <Button color="primary" onClick={privateSearchCode}>Search</Button>
               <br />
               {example.map(item => <><AceModalUser name={item.name} snip={item.snip} sniptwo={item.sniptwo} /><br /></>)}
             </Jumbotron>
@@ -214,10 +215,10 @@ const Profile = () => {
             </CustomInput>
             </FormGroup>
               <hr />
-              <h1>Username:<span></span></h1>
+              <h2>Username:<span></span></h2>
               <textarea style={{ width: "80%" }} rows="7" name="bio" onChange={handleUserFormInput} placeholder="Write Your Bio Here"></textarea>
               <br />
-              <Button onClick={updateUser}>Update</Button>
+              <Button primary="primary" onClick={updateUser}>Update</Button>
             </Jumbotron>
 
           </Col>
@@ -232,13 +233,14 @@ const Profile = () => {
               </InputGroup>
               <br />
 
-              <Button onClick={userSearch}>Search</Button>
+              <Button color="primary" onClick={userSearch}>Search</Button>
               <br />
-              {follow.map(item => <><FollowModal name={item.name} skills={item.skills} /> <br /></>)}
+              {follow.map(item => <><FollowModal name={item.name} bio={item.skills} /> <br /></>)}
             </Jumbotron>
           </Col>
         </Row>
       </Container>
+      <br></br>
       <FooterPage />
 
     </>) : (

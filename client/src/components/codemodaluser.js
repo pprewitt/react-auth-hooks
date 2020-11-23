@@ -112,10 +112,10 @@ function AceModelUser({name, title, snip, sniptwo, props}){
           <br></br>
           <Input type="textarea" name="Notes" id="exampleText" onChange={handleSnipInput} placeholder="notes" />
       </ModalBody>
-      <ModalFooter>
+      <ModalFooter style={{ display:"flex",justifyContent:"space-between"}}>
+        <Button color="danger" onClick={toggle}>Delete</Button>
         <Button color="secondary" onClick={toggle}>Cancel</Button>
-        <Button variant="danger" onClick={toggle}>Delete</Button>
-        <Button variant="primary" onClick={updateSnip}>Update</Button>
+        <Button color="primary" onClick={updateSnip}>Update</Button>
       </ModalFooter> 
       
     </Modal>

@@ -16,7 +16,7 @@ function LogInBro(){
             <CardBody style={{display:"flex", alignItems:"center", justifyContent:"center", flexDirection: "column", opacity:".8"}}>
             <h4>You Must Log in to view this page </h4>
             <Link to="/login">
-                <Button> Login </Button>
+                <Button color="primary"> Login </Button>
             </Link>
             </CardBody>
 

@@ -53,7 +53,7 @@ const Home = () => {
                 </CustomInput>
               </FormGroup>
               <br />
-              <Button>Search</Button>
+              <Button color="primary">Search</Button>
               <br />
               {globalexample.map(item => <><AceModalGlobal name={item.name} snip={item.snip} author={item.author} language={item.language} note={item.note} /><br /></>)}
             </Jumbotron>
